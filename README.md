@@ -103,7 +103,7 @@ python test_sim_viewer.py --scene data/scene_datasets/test_scene/HM3D/00802-wcoj
 You can control an agent in these test scenes. Use **W/A/S/D keys** to move forward/left/backward/right and **Arrow keys or mouse (LEFT click)** to control gaze direction (look up/down/left/right).
 
 <p align="center">
-    <img src="assets/fig2.gif" width="100%" style="display:inline-block;"/>
+    <img src="assets/fig2.gif" width="50%" style="display:inline-block;"/>
 </p>
 
 You can see the terminal logs for more available commands.
@@ -114,5 +114,5 @@ You can see the terminal logs for more available commands.
 python test_sim_sensor.py
 ```
 <p align="center">
-    <img src="assets/fig1.png" width="100%" style="display:inline-block;"/>
+    <img src="assets/fig1.png" width="70%" style="display:inline-block;"/>
 </p>
