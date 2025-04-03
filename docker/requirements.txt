@@ -1,0 +1,6 @@
+numba
+numpy-quaternion
+imageio
+tqdm
+scipy
+matplotlib

@@ -1,0 +1,37 @@
+services:
+  habitat-sim:
+    image: habitat-sim:v0.2.5
+    build:
+      context: .
+      dockerfile: habitat.Dockerfile
+    container_name: habitat-sim
+    network_mode: host
+    privileged: true
+    stdin_open: true
+    tty: true
+    working_dir: /workspace
+    runtime: nvidia
+    # Enable Nvidia GPUs
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    # Environment variables passed to the container
+    environment:
+      - "DISPLAY"
+      - "QT_X11_NO_MITSHM=1"
+      - XAUTHORITY=/tmp/.docker.xauth
+      - PYTHONPATH=/tmp/habitat-sim/src_python
+    # This mounts the host directories into the container 
+    volumes:
+      # This mounts the X11 socket into the container so that GUIs can be displayed
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - /etc/localtime:/etc/localtime:ro
+      - /dev/input:/dev/input
+      - /dev/bus/usb:/dev/bus/usb:rw
+      - ${HOME}/Habitat-Sim-Docker/workspace:/workspace:rw
+      # This is the entrypoint for the container
+    entrypoint: ["/bin/bash", "-c", "/entrypoint.sh"]
